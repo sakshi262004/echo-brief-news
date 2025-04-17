@@ -13,23 +13,17 @@ export function NewsCard({ article }: NewsCardProps) {
     addSuffix: true,
   });
 
-  // Map category to badge color
+  // Simplified category color mapping for brown tones
   const getCategoryColor = (category?: string) => {
     switch (category) {
       case "technology":
-        return "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300";
+        return "bg-secondary/20 text-secondary-foreground";
       case "business":
-        return "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300";
+        return "bg-accent/20 text-accent-foreground";
       case "entertainment":
-        return "bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-300";
-      case "health":
-        return "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300";
-      case "science":
-        return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300";
-      case "sports":
-        return "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300";
+        return "bg-primary/20 text-primary-foreground";
       default:
-        return "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300";
+        return "bg-muted/20 text-muted-foreground";
     }
   };
 
@@ -40,13 +34,13 @@ export function NewsCard({ article }: NewsCardProps) {
       rel="noopener noreferrer"
       className="block"
     >
-      <Card className="group overflow-hidden h-full hover:shadow-md transition-all duration-300 animate-fade-up">
+      <Card className="group overflow-hidden h-full hover:shadow-md transition-all duration-300 animate-fade-up border-border/50">
         {article.urlToImage && (
           <div className="h-48 overflow-hidden">
             <img
               src={article.urlToImage}
               alt={article.title}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 filter grayscale-[20%] group-hover:grayscale-0"
             />
           </div>
         )}
@@ -55,7 +49,7 @@ export function NewsCard({ article }: NewsCardProps) {
           <div className="flex justify-between items-start">
             <Badge 
               variant="outline" 
-              className={getCategoryColor(article.category)}
+              className={`${getCategoryColor(article.category)} border-border/50`}
             >
               {article.category || "News"}
             </Badge>
@@ -63,7 +57,7 @@ export function NewsCard({ article }: NewsCardProps) {
               {formattedDate}
             </span>
           </div>
-          <h3 className="text-lg font-semibold mt-2 line-clamp-2">
+          <h3 className="text-lg font-medium mt-2 line-clamp-2 text-foreground">
             {article.title}
           </h3>
         </CardHeader>
@@ -76,7 +70,7 @@ export function NewsCard({ article }: NewsCardProps) {
           )}
         </CardContent>
         
-        <CardFooter className="border-t pt-3 flex justify-between text-xs text-muted-foreground">
+        <CardFooter className="border-t border-border/50 pt-3 flex justify-between text-xs text-muted-foreground">
           <span>
             {article.source.name}
           </span>

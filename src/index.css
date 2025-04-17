@@ -7,65 +7,54 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 222.2 84% 4.9%;
+    /* Brown tone color palette */
+    --background: 24 20% 95%; /* Light warm beige */
+    --foreground: 24 10% 10%; /* Dark brown */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 24 20% 98%; /* Very light brown/cream */
+    --card-foreground: 24 10% 20%; /* Dark brown */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 24 50% 50%; /* Warm brown */
+    --primary-foreground: 24 20% 98%; /* Cream */
 
-    --primary: 221 83% 53%;
-    --primary-foreground: 210 40% 98%;
+    --secondary: 24 20% 90%; /* Light brown */
+    --secondary-foreground: 24 10% 20%; /* Dark brown */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 24 20% 92%; /* Soft light brown */
+    --muted-foreground: 24 10% 45%; /* Muted brown */
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 24 50% 40%; /* Deeper brown */
+    --accent-foreground: 24 20% 98%; /* Cream */
 
-    --accent: 174 80% 32%; /* Teal accent */
-    --accent-foreground: 0 0% 100%;
+    --border: 24 20% 85%; /* Light brown border */
+    --input: 24 20% 88%; /* Slightly darker input */
+    --ring: 24 50% 45%; /* Brown ring */
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221 83% 53%;
-
-    --radius: 0.75rem;
+    --radius: 0.5rem; /* More minimal rounded corners */
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 24 10% 10%; /* Dark brown */
+    --foreground: 24 20% 95%; /* Light cream */
 
-    --card: 223 84% 8%;
-    --card-foreground: 210 40% 98%;
+    --card: 24 10% 15%; /* Very dark brown */
+    --card-foreground: 24 20% 98%; /* Light cream */
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --primary: 24 50% 60%; /* Lighter warm brown */
+    --primary-foreground: 24 10% 20%; /* Dark brown */
 
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 24 10% 20%; /* Dark brown */
+    --secondary-foreground: 24 20% 95%; /* Light cream */
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --muted: 24 10% 15%; /* Very dark brown */
+    --muted-foreground: 24 20% 70%; /* Soft light brown */
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 24 50% 50%; /* Warm brown */
+    --accent-foreground: 24 20% 98%; /* Cream */
 
-    --accent: 174 80% 32%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
+    --border: 24 10% 25%; /* Dark brown border */
+    --input: 24 10% 22%; /* Slightly lighter input */
+    --ring: 24 50% 55%; /* Lighter brown ring */
   }
 }
 
@@ -80,7 +69,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-medium tracking-tight;
+    @apply font-medium tracking-tight text-foreground;
   }
   
   .news-card {
@@ -92,6 +81,21 @@
   }
   
   .category-pill {
-    @apply px-3 py-1 rounded-full text-xs font-medium;
+    @apply px-3 py-1 rounded-full text-xs font-medium bg-secondary text-secondary-foreground;
+  }
+}
+
+/* Minimal scrollbar and selection styles */
+@layer utilities {
+  ::-webkit-scrollbar {
+    @apply w-2 bg-transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/50 rounded-full;
+  }
+
+  ::selection {
+    @apply bg-primary/20 text-foreground;
   }
 }
